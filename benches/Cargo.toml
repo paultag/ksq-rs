@@ -1,0 +1,15 @@
+[package]
+name = "ksq-benches"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ksq = { path = "../" }
+rand = { version = "0.8.5", features = ["small_rng"] }
+
+[dev-dependencies]
+criterion = { version = "0.3", features = ["html_reports"] }
+
+[[bench]]
+name = "get"
+harness = false
