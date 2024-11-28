@@ -38,11 +38,13 @@
 
 mod cell;
 mod layer;
+mod matrix;
 mod tree;
 mod tree_iterator;
 
 pub(crate) use cell::Cell;
 pub(crate) use layer::Layer;
+pub use matrix::Matrix;
 pub use tree::{Error, Tree};
 
 pub(crate) use cell::CellRepr;

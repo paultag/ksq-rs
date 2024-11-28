@@ -38,7 +38,20 @@ pub enum Error {
     Empty,
 }
 
+impl Default for Tree {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Tree {
+    /// Create a new [Tree] with the smallest possible capacity, `16` bits,
+    /// in this case. You may [Tree::grow] to increase the bit capacity of
+    /// the [Tree].
+    pub fn new() -> Self {
+        Tree(vec![Layer(vec![0.into()])])
+    }
+
     /// Construct a new K2 [Tree] from a set of `u16` "Cells". The bytewise
     /// encoding of the K2 [Tree] is self-describing, so no additional data
     /// beyond the underlying values is required.
@@ -76,6 +89,11 @@ impl Tree {
     /// grown using [Tree::grow].
     pub fn bits(&self) -> usize {
         Cell::bits() << (4 * (self.0.len() - 1))
+    }
+
+    /// Return the height of the tree.
+    pub fn height(&self) -> usize {
+        self.0.len()
     }
 
     /// Grow a [Tree] by one "level". The current implementation will grow by
