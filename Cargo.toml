@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT"
 description = "implementation of a k-2 tree"
-homepage = "https://github.com/paultag/ksq"
+homepage = "https://github.com/paultag/ksq-rs"
 
 [dependencies]
