@@ -26,6 +26,12 @@ use super::Tree;
 #[derive(Debug, Clone, PartialEq)]
 pub struct Matrix(Tree);
 
+impl Default for Matrix {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Matrix {
     /// Return a new [Matrix] with a new [Tree].
     pub fn new() -> Self {
