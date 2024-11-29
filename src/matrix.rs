@@ -22,7 +22,7 @@ use super::Tree;
 
 /// A [Matrix] is the user-facing 2-dimensional bit vector built on a
 /// [Tree]. The [Matrix] can store a fixed number of bits, which can be
-/// accessed using [Tree::get], [Tree::set] or [Tree::unset].
+/// accessed using [Matrix::get], [Matrix::set] or [Matrix::unset].
 #[derive(Debug, Clone, PartialEq)]
 pub struct Matrix(Tree);
 
