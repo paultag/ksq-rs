@@ -209,9 +209,7 @@ where
             if self.index >= self.bits {
                 return None;
             }
-            let Some((offset, cell)) = self.leaf_layer_cur else {
-                return None;
-            };
+            let (offset, cell) = self.leaf_layer_cur?;
             if self.index < offset {
                 self.index = offset;
             }
