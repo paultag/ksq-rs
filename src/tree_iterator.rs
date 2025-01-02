@@ -209,17 +209,24 @@ where
             if self.index >= self.bits {
                 return None;
             }
-            let idx = self.index;
-            self.index += 1;
             let Some((offset, cell)) = self.leaf_layer_cur else {
                 return None;
             };
-            let bit_index = idx - offset;
-            if cell.get(bit_index) {
-                return Some(idx);
+            if self.index < offset {
+                self.index = offset;
             }
+
+            let idx = self.index;
+            self.index += 1;
+
+            let bit_index = idx - offset;
+
             if self.index >= offset + Cell::bits() {
                 self.leaf_layer_cur = self.leaf_layer_iter.next();
+            }
+
+            if cell.get(bit_index) {
+                return Some(idx);
             }
         }
     }

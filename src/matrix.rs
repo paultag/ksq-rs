@@ -70,6 +70,13 @@ impl Matrix {
         self.0.iter_range(start..end)
     }
 
+    /// Return the set 1s of the row of the Matrix
+    pub fn row_ones(&self, row: usize) -> impl Iterator<Item = usize> {
+        let start = row * self.side();
+        let end = start + self.side();
+        self.0.iter_ones_range(start..end).map(move |v| v - start)
+    }
+
     /// return the value of the bit at (x, y)
     pub fn get(&mut self, x: usize, y: usize) -> bool {
         self.0.get(self.offset(x, y))
