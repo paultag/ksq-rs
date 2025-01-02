@@ -60,7 +60,14 @@ impl Matrix {
 
     /// return the offset into the 1d tree.
     fn offset(&self, x: usize, y: usize) -> usize {
-        (self.side() * y) + x
+        (self.side() * x) + y
+    }
+
+    /// Return a row of the Matrix
+    pub fn row(&self, row: usize) -> impl Iterator<Item = bool> {
+        let start = row * self.side();
+        let end = start + self.side();
+        self.0.iter_range(start..end)
     }
 
     /// return the value of the bit at (x, y)
@@ -140,6 +147,25 @@ mod tests {
                 assert!(mat.get(x, y));
             }
         }
+    }
+
+    #[test]
+    fn matrix_get_row() {
+        let mut mat = Matrix::new();
+        mat.grow();
+
+        mat.set(5, 1);
+        mat.set(5, 7);
+        mat.set(5, 8);
+
+        let row = mat.row(5).collect::<Vec<_>>();
+        assert_eq!(
+            vec![
+                false, true, false, false, false, false, false, true, true, false, false, false,
+                false, false, false, false
+            ],
+            row
+        );
     }
 }
 
