@@ -60,7 +60,7 @@ impl Matrix {
 
     /// return the offset into the 1d tree.
     fn offset(&self, x: usize, y: usize) -> usize {
-        (self.side() * x) + y
+        (self.side() * y) + x
     }
 
     /// Return a row of the Matrix
@@ -161,9 +161,9 @@ mod tests {
         let mut mat = Matrix::new();
         mat.grow();
 
-        mat.set(5, 1);
-        mat.set(5, 7);
-        mat.set(5, 8);
+        mat.set(1, 5);
+        mat.set(7, 5);
+        mat.set(8, 5);
 
         let row = mat.row(5).collect::<Vec<_>>();
         assert_eq!(
