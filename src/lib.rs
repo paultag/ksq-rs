@@ -26,6 +26,7 @@
 #![deny(unused_qualifications)]
 #![deny(rustdoc::broken_intra_doc_links)]
 #![deny(rustdoc::private_intra_doc_links)]
+#![no_std]
 
 //! `ksq` is an implementation of a K2 tree (k²-tree), which, when storing
 //! sparse bits, is a very space-effective matrix. This library implements
@@ -35,6 +36,14 @@
 //! Unlike some other k2 trees, I've opted to use a `u16`, not a `u8`. This
 //! means that the tree will grow by `N<<4` each layer -- and each cell can
 //! represent a maximum of 16 other cells, not 8.
+
+pub(crate) mod std {
+    extern crate alloc;
+    extern crate core;
+
+    pub use alloc::*;
+    pub use core::*;
+}
 
 mod cell;
 mod layer;

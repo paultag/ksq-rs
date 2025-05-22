@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE. }}}
 
-use super::{Cell, CellRepr, CountOnes};
+use super::{Cell, CellRepr, CountOnes, std::vec::Vec};
 
 /// A [Layer] is a collection of [Cell]s.
 ///

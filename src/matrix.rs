@@ -102,6 +102,7 @@ impl Matrix {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::std::{vec, vec::Vec};
 
     #[test]
     fn matrix_dimensions() {

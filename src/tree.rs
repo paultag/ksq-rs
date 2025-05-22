@@ -18,7 +18,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE. }}}
 
-use super::{Cell, CellRepr, CountOnes, Layer};
+use super::{
+    Cell, CellRepr, CountOnes, Layer,
+    std::{vec, vec::Vec},
+};
 
 /// A `tree` is the user-facing 1-dimensional bit vector. The `tree` can store
 /// a fixed number of bits, which can be accessed using [Tree::get],

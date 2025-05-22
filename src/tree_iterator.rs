@@ -18,8 +18,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE. }}}
 
-use super::{Cell, Tree};
-use std::ops::Range;
+use super::{
+    Cell, Tree,
+    std::{ops::Range, vec::Vec},
+};
 
 impl Tree {
     /// Iterate over all the bits in the tree. Once called, this will take
@@ -233,6 +235,7 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::std::vec;
 
     #[test]
     fn tree_iter() {
