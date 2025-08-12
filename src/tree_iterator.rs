@@ -82,10 +82,10 @@ impl Tree {
             // here we need to scan forward until the leaf_layer_cur is
             // gte from
 
-            if let Some((offset, _)) = leaf_layer_cur {
-                if (offset + Cell::bits()) <= from {
-                    leaf_layer_cur = self._scan_iter_forward(&mut leaf_layer_iter, from);
-                }
+            if let Some((offset, _)) = leaf_layer_cur
+                && (offset + Cell::bits()) <= from
+            {
+                leaf_layer_cur = self._scan_iter_forward(&mut leaf_layer_iter, from);
             }
         }
 
@@ -105,12 +105,11 @@ impl Tree {
         let mut leaf_layer_iter = leaf_layer.clone().into_iter();
         let mut leaf_layer_cur = leaf_layer_iter.next();
 
-        if from >= Cell::bits() {
-            if let Some((offset, _)) = leaf_layer_cur {
-                if (offset + Cell::bits()) <= from {
-                    leaf_layer_cur = self._scan_iter_forward(&mut leaf_layer_iter, from);
-                }
-            }
+        if from >= Cell::bits()
+            && let Some((offset, _)) = leaf_layer_cur
+            && (offset + Cell::bits()) <= from
+        {
+            leaf_layer_cur = self._scan_iter_forward(&mut leaf_layer_iter, from);
         }
 
         LeafIteratorOnes {
