@@ -4,6 +4,6 @@ version = "0.2.1"
 edition = "2024"
 license = "MIT"
 description = "implementation of a k-2 tree"
-repository = "https://github.com/paultag/ksq-rs"
+repository = "https://git.pault.ag/rust/ksq"
 
 [dependencies]
